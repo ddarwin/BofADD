@@ -18,7 +18,7 @@ kind: Deployment
 metadata:
   name: contacts
   labels:
-    tags.datadoghq.com/env: danmBank
+    tags.datadoghq.com/env: ddarwin-bofa
     tags.datadoghq.com/service: contacts
     tags.datadoghq.com/version: '1.2'
 spec:

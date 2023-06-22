@@ -18,7 +18,7 @@ kind: Deployment
 metadata:
   name: transactionhistory
   labels:
-    tags.datadoghq.com/env: danmBank
+    tags.datadoghq.com/env: ddarwin-bofa
     tags.datadoghq.com/service: transactionhistory
     tags.datadoghq.com/version: '1.2'
 spec:
