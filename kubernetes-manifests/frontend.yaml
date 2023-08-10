@@ -22,7 +22,7 @@ metadata:
     tags.datadoghq.com/service: frontend
     tags.datadoghq.com/version: '1.2'
   annotations:
-    gremlin.com/service-id: 'Web Frontend'
+    gremlin.com/service-id: 'Frontend'
 spec:
   selector:
     matchLabels:
