@@ -21,6 +21,8 @@ metadata:
     tags.datadoghq.com/env: ddarwin-bofa
     tags.datadoghq.com/service: ledgerwriter
     tags.datadoghq.com/version: '1.2'
+  annotations:
+    gremlin.com/service-id: 'Ledger Writer'
 spec:
   selector:
     matchLabels:

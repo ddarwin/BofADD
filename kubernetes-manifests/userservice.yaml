@@ -21,6 +21,8 @@ metadata:
     tags.datadoghq.com/env: ddarwin-bofa
     tags.datadoghq.com/service: userservice
     tags.datadoghq.com/version: '1.2'
+  annotations:
+    gremlin.com/service-id: 'User Service'
 spec:
   selector:
     matchLabels:
