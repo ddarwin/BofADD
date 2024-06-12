@@ -33,6 +33,7 @@ spec:
         admission.datadoghq.com/enabled: "true" 
         admission.datadoghq.com/config.mode: "socket"
         app: frontend
+        zone: zone1        
       annotations:
         admission.datadoghq.com/python-lib.version: latest
     spec:

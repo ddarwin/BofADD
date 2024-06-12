@@ -4,12 +4,12 @@ apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
 
 metadata:
-  name: ddarwin-demo-spot-cluster
+  name: ddarwin-demo-cluster
   region: us-east-2
   version: "1.27"
   tags:
     owner: ddarwin
-    expiration: 12-31-2024 
+    expiration: 12-31-2024
 
 # Use our shared VPC. This helps to keep costs down by about $30-$45 per month per cluster.
 vpc:
@@ -60,8 +60,8 @@ iamIdentityMappings:
 
 # Use spot instances.
 managedNodeGroups:
-  - name: ddarwin-demo-spot-cluster-NG1
-    minSize: 2
+  - name: ddarwin-demo-NG1
+    minSize: 3
     maxSize: 4
     volumeSize: 20
     instanceTypes: 

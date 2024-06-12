@@ -32,7 +32,7 @@ datadog:
   # datadog.apiKey -- Your Datadog API key
 
   ## ref: https://app.datadoghq.com/account/settings#agent/kubernetes
-  apiKey:  <DD_API_KEY>
+  apiKey:  # <DATADOG_API_KEY>
 
   # datadog.apiKeyExistingSecret -- Use existing Secret which stores API key instead of creating a new one. The value should be set with the `api-key` key inside the secret.
 
@@ -43,7 +43,7 @@ datadog:
 
   ## If you are using clusterAgent.metricsProvider.enabled = true, you must set
   ## a Datadog application key for read access to your metrics.
-  appKey:  <DD_APPLICATION_KEY>
+  appKey:  # <DATADOG_APP_KEY>
 
   # datadog.appKeyExistingSecret -- Use existing Secret which stores APP key instead of creating a new one. The value should be set with the `app-key` key inside the secret.
 
@@ -246,7 +246,7 @@ datadog:
 
   # datadog.namespaceLabelsAsTags -- Provide a mapping of Kubernetes Namespace Labels to Datadog Tags
   namespaceLabelsAsTags: {}
-  #   env: environment
+  # env: env
   #   <KUBERNETES_NAMESPACE_LABEL>: <DATADOG_TAG_KEY>
 
   # datadog.tags -- List of static tags to attach to every metric, event and service check collected by this Agent.
@@ -440,13 +440,13 @@ datadog:
     # datadog.apm.portEnabled -- Enable APM over TCP communication (hostPort 8126 by default)
 
     ## ref: https://docs.datadoghq.com/agent/kubernetes/apm/
-    portEnabled: false
+    portEnabled: true
 
     # datadog.apm.enabled -- Enable this to enable APM and tracing, on port 8126
     # DEPRECATED. Use datadog.apm.portEnabled instead
 
     ## ref: https://github.com/DataDog/docker-dd-agent#tracing-from-the-host
-    # enabled: true
+    enabled: true
 
     # datadog.apm.port -- Override the trace Agent port
 
@@ -706,6 +706,12 @@ datadog:
       # datadog.sbom.containerImage.enabled -- Enable SBOM collection for container images
       enabled: false
 
+      # datadog.sbom.containerImage.uncompressedLayersSupport -- Use container runtime snapshotter
+      # This should be set to true when using EKS, GKE or if containerd is configured to
+      # discard uncompressed layers.
+      # This feature will cause the SYS_ADMIN capability to be added to the Agent container.
+      uncompressedLayersSupport: false
+
     host:
       # datadog.sbom.host.enabled -- Enable SBOM collection for host filesystems
       enabled: false
@@ -767,8 +773,12 @@ datadog:
           enabled: false
 
       securityProfile:
-        # datadog.securityAgent.runtime.securityProfile.enabled -- Set to true to enable CWS runtime anomaly detection
+        # datadog.securityAgent.runtime.securityProfile.enabled -- Set to true to enable CWS runtime security profiles
         enabled: false
+
+        anomalyDetection:
+          # datadog.securityAgent.runtime.securityProfile.anomalyDetection.enabled -- Set to true to enable CWS runtime drift events
+          enabled: true
 
   ## Manage NetworkPolicy
   networkPolicy:
@@ -874,7 +884,7 @@ clusterAgent:
     name: cluster-agent
 
     # clusterAgent.image.tag -- Cluster Agent image tag to use
-    tag: 7.49.1
+    tag: 7.50.3
 
     # clusterAgent.image.digest -- Cluster Agent image digest to use, takes precedence over tag if specified
     digest: ""
@@ -1259,7 +1269,7 @@ fips:
     name: fips-proxy
 
     # fips.image.tag -- Define the FIPS sidecar container version to use.
-    tag: 1.0.0
+    tag: 1.0.1
 
     # fips.image.pullPolicy -- Datadog the FIPS sidecar image pull policy
     pullPolicy: IfNotPresent
@@ -1302,7 +1312,7 @@ agents:
     name: agent
 
     # agents.image.tag -- Define the Agent version to use
-    tag: 7.49.1
+    tag: 7.50.3
 
     # agents.image.digest -- Define Agent image digest to use, takes precedence over tag if specified
     digest: ""
@@ -1770,7 +1780,7 @@ clusterChecksRunner:
     name: agent
 
     # clusterChecksRunner.image.tag -- Define the Agent version to use
-    tag: 7.49.1
+    tag: 7.50.3
 
     # clusterChecksRunner.image.digest -- Define Agent image digest to use, takes precedence over tag if specified
     digest: ""
